@@ -1,0 +1,44 @@
+# Training configuration (defaults of x3dcomposer/config.py written out; edit the paths).
+backbone_weights: checkpoints/vggt_omega_1b_416_reproduce.pt   # from https://huggingface.co/facebook/VGGT-Omega
+vggt_omega_root: third_party/vggt-omega                         # clone of the backbone repository (training losses)
+output: runs/x3dcomposer
+seed: 0
+save_every: 500
+log_every: 50
+
+model:
+  lora_rank: 32
+
+data:
+  scenes: data/scenes_train.txt
+  assets: data/assets
+  source_weights: {}              # e.g. {indoor_synthetic: 0.7, real_scans: 0.3}; empty = uniform over scenes
+  token_budget: 56000             # tokens per GPU and optimizer step
+  same_asset_probability: 0.09    # samples forced to contain two objects that share an asset
+  augment: true
+  workers: 8
+
+loss:
+  scale: 5.0
+  shape: 3.0
+  consistency: 1.0
+  candidate: 2.0
+  fused: 1.0
+  agreement: 1.0
+  crop: 0.5
+  grounding: 0.5
+  floor: 0.3
+  small_object: 2.0
+  symmetry: true
+
+optim:
+  steps: 200000
+  new_lr: 2.5e-5
+  pretrained_lr: 5.0e-6
+  weight_decay: 0.05
+  betas: [0.9, 0.95]
+  warmup_steps: 500
+  final_lr_ratio: 0.01
+  grad_clip: 1.0
+  ema_decay: 0.9998
+  gradient_checkpointing: true

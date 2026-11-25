@@ -1,0 +1,15 @@
+# Tested with Python 3.11. Install a CUDA build of PyTorch that matches your driver.
+torch==2.6.0
+torchvision==0.21.0
+numpy==1.26.4
+pillow==12.3.0
+safetensors==0.7.0
+einops==0.8.2
+opencv-python==4.11.0.86
+pyyaml==6.0.3
+huggingface_hub==0.36.0
+trimesh>=4.0            # GLB export of predicted layouts
+# The backbone (FAIR Noncommercial Research License) is installed separately:
+#   pip install "vggt-omega @ git+https://github.com/facebookresearch/vggt-omega@48b23c8ce72c9a8fcf987f0d7f43d8e4870759f6"
+# Asset rendering (tools/render_asset.py) additionally needs Blender as a Python module:
+#   pip install bpy    # Blender 4.2 - 4.5

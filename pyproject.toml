@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "x3dcomposer"
+version = "1.0.0"
+description = "X-3DComposer: feed-forward 3D scene composition with any assets from any views."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "CC-BY-NC-4.0"}
+authors = [{name = "Zidian Qiu"}, {name = "Ancong Wu"}]
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = [
+    "torch>=2.6",
+    "numpy<2",
+    "pillow",
+    "safetensors",
+    "pyyaml",
+    "huggingface_hub",
+    "trimesh>=4.0",
+]
+
+[project.optional-dependencies]
+render = ["bpy"]
+
+[tool.setuptools.packages.find]
+include = ["x3dcomposer*"]
+
+[tool.ruff]
+line-length = 120

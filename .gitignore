@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+/build/
+/dist/
+/runs/
+/checkpoints/
+/weights/
+/data/
+/third_party/
+/out/
+.DS_Store
